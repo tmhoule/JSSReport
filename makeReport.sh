@@ -232,7 +232,7 @@ echo "['5G', $x5kram],">> report.html
 echo "['6G', $x6kram],">> report.html
 echo "['7G', $x7kram],">> report.html
 echo "['8G', $x8kram],">> report.html
-echo "['9G', $x8kram],">> report.html
+echo "['9G', $x9kram],">> report.html
 echo "['10G', $x10kram],">> report.html
 echo "['11G', $x11kram],">> report.html
 echo "['12G', $x12kram],">> report.html
