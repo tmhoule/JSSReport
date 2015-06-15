@@ -7,6 +7,6 @@ Make sure makeReport.sh is executable (chmod +x makeReport.sh)
 
 Edit MakeReport.sh to have your name/password & server.
 
-run the tool.  (./MakeReport).
+run the tool.  (./makeReport).
 
 Open report.html in a browser.
