@@ -3,15 +3,15 @@
 #11June2015
 #To create a report of hardware info from JSS API
 
-username="NAME"
-password="XXX"
-server="https://server:8443"
+username="od"
+password="22"
+server="https://server.partners.org:8443"
 
 echo "<html>\n  <head>\n" > report.html
 
 #gets list of ID numbers of all computers in the JSS
-#allComputers=`curl -s -u $username:$password $server/JSSResource/computers/match/vascor* -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
-allComputers=`curl -s -u $username:$password $server/JSSResource/computers -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
+allComputers=`curl -s -u $username:$password $server/JSSResource/computers/match/vascor* -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
+#allComputers=`curl -s -u $username:$password $server/JSSResource/computers -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
 
 #clear ram counters for each thousand
 x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0;x10kram=0;x11kram=0;x12kram=0;x13kram=0;x14kram=0;x15kram=0;x16kram=0;x17kram=0;x18kram=0;x19kram=0;x20kram=0;x21kram=0;x22kram=0;x23kram=0;x24kram=0;x25kram=0;x26kram=0;x27kram=0;x28kram=0;x29kram=0;x30kram=0;x31kram=0;x32kram=0;x33kram=0;x34kram=0;x35kram=0;x36kram=0;x37kram=0;x38kram=0;x39kram=0;x40kram=0;x41kram=0;x42kram=0;x43kram=0;x44kram=0;x45kram=0;x46kram=0;x47kram=0;x48kram=0;x49kram=0;x50kram=0;x51kram=0;x52kram=0;x53kram=0;x54kram=0;x55kram=0;x56kram=0;x57kram=0;x58kram=0;x59kram=0;x60kram=0;x61kram=0;x62kram=0;x63kram=0;x64kram=0;x65kram=0;x66kram=0;x67kram=0;x68kram=0;x69kram=0;x70kram=0;x71kram=0;x72kram=0;x73kram=0;x74kram=0;x75kram=0;x76kram=0;x77kram=0;x78kram=0;x79kram=0;x80kram=0;x81kram=0;x82kram=0;x83kram=0;x84kram=0;x85kram=0;x86kram=0;x87kram=0;x88kram=0;x89kram=0;x90kram=0;x91kram=0;x92kram=0;x93kram=0;x94kram=0;x95kram=0;x96kram=0;x97kram=0;x98kram=0;x99kram=0;x100kram=0
@@ -371,7 +371,7 @@ echo "Calculating age of each computer...."
 for oneComputer in $allComputers; do
     ageEpochlong=`curl -s -u $username:$password $server/JSSResource/computers/id/$oneComputer |xpath '/computer/purchasing/po_date_epoch'|sed 's*<po_date_epoch>*\'$'\n*g' |sed 's*</po_date_epoch>*\'$'\n*g'|tail -2|head -1`
     ageEpoch=$(($ageEpochlong/1000))
-    if (($ageEpoch >= ($today - $sixMonthsAgo )); then
+    if (($ageEpoch >= $today-$sixMonthsAgo)); then
 	((xnewCompAge++));
     fi
     if (($ageEpoch <= $sixMonthsAgo && $ageEpoch >= $oneYearAgo)); then
