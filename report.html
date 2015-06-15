@@ -1,0 +1,277 @@
+<html>
+  <head>
+
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Ram');
+      data.addColumn('number','Macs');
+      data.addRows([
+['1G', 20],
+['2G', 273],
+['3G', 17],
+['4G', 2274],
+['5G', 9],
+['6G', 27],
+['7G', 0],
+['8G', 2729],
+['9G', 2729],
+['10G', 6],
+['11G', 0],
+['12G', 58],
+['13G', 4],
+['14G', 2],
+['15G', 0],
+['16G', 1193],
+['17G', 1],
+['18G', 0],
+['19G', 0],
+['20G', 4],
+['21G', 0],
+['22G', 0],
+['23G', 0],
+['24G', 17],
+['25G', 0],
+['26G', 1],
+['27G', 0],
+['28G', 0],
+['29G', 0],
+['30G', 0],
+['31G', 0],
+['32G', 101],
+['33G', 0],
+['34G', 0],
+['35G', 0],
+['36G', 0],
+['37G', 0],
+['38G', 0],
+['39G', 1],
+['40G', 1],
+['41G', 0],
+['42G', 0],
+['43G', 0],
+['44G', 0],
+['45G', 0],
+['46G', 0],
+['47G', 0],
+['48G', 0],
+['49G', 2],
+['50G', 0],
+['51G', 0],
+['52G', 0],
+['53G', 0],
+['54G', 0],
+['55G', 0],
+['56G', 0],
+['57G', 0],
+['58G', 0],
+['59G', 0],
+['60G', 0],
+['61G', 0],
+['62G', 0],
+['63G', 0],
+['64G', 0],
+['65G', 18],
+['66G', 0],
+['67G', 0],
+['68G', 0],
+['69G', 0],
+['70G', 0],
+['71G', 0],
+['72G', 0],
+['73G', 0],
+['74G', 0],
+['75G', 0],
+['76G', 0],
+['77G', 0],
+['78G', 0],
+['79G', 0],
+['80G', 0],
+['81G', 0],
+['82G', 0],
+['83G', 0],
+['84G', 0],
+['85G', 0],
+['86G', 0],
+['87G', 0],
+['88G', 0],
+['89G', 0],
+['90G', 0],
+['91G', 0],
+['92G', 0],
+['93G', 0],
+['94G', 0],
+['95G', 0],
+['96G', 0],
+['97G', 0],
+['98G', 0],
+['99G', 0],
+['100G', 0],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Ram in Macs',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divRam'));
+        chart.draw(data, options);
+      }
+    </script>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Ram');
+      data.addColumn('number','Macs');
+      data.addRows([
+['Less than 6 months', 3],
+['6 months old', 1787],
+['1 year old', 1786],
+['2 years old', 933],
+['3 years old', 595],
+['4 years old', 569],
+['5 years old', 460],
+['6 years old', 266],
+['7 years old', 122],
+['8 years old', 18],
+['9 years old', 0],
+['10 years old', 0],
+['11 years old', 0],
+['12 years old', 0],
+['13 years old', 0],
+['14 years old', 0],
+['15 years old', 245],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Age of Macs',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_divAge'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Ram');
+      data.addColumn('number','Macs');
+      data.addRows([
+['OS 11 El Capitan', 3],
+['OS 10 Yosemite', 3054],
+['OS 9 Mavericks', 2046],
+['OS 8 Mountain Lion', 838],
+['OS 7 Lion', 578],
+['OS 6 Snow Leopard', 204],
+['OS 5 Leopard', 40],
+['OS 4 Tiger', 0],
+['OS 3 Panther', 0],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Major OS Version',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divOsv'));
+        chart.draw(data, options);
+      }
+    </script>
+
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Model');
+      data.addColumn('number','Macs');
+      data.addRows([
+['Mac Mini', 546],
+['MacBookPro', 2602],
+['MacBookAir', 1638],
+['MacBook', 182],
+['G5', 1],
+['VMWare', 10],
+['iMac', 1602],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Mac Model Type',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divMod'));
+        chart.draw(data, options);
+      }
+    </script>
+
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_divAge"></div>
+    <div id="chart_divRam"></div>
+    <div id="chart_divOsv"></div>
+    <div id="chart_divMod"></div>
+  </body>
+</html>
