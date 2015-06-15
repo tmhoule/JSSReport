@@ -330,7 +330,7 @@ cat ./ram-footer.html >> report.html
 #find age of computers
 #initiliaze variables
 today=`date +%s`
-sixMonthsAgo=$(($today-518400))
+sixMonthsAgo=$(($today-15768000))
 oneYearAgo=$(($today-31536000))
 twoYearsAgo=$(($today-63072000))
 threeYearsAgo=$(($today-94608000))
@@ -375,7 +375,8 @@ for oneComputer in $allComputers; do
     ageEpoch=$(($ageEpochlong/1000))
     echo "ID $oneComputer is $ageEpoch seconds old"
     if (($ageEpoch >= $sixMonthsAgo)); then
-	((xnewCompAge++));
+	((xnewCompAge++))
+	echo "$oneComputer is less than 6 months old"
     elif
 	(($ageEpoch <= $sixMonthsAgo && $ageEpoch >= $oneYearAgo)); then
 	((xSMyoCompAge++));
