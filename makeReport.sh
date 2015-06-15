@@ -5,13 +5,13 @@
 
 username="od"
 password="22"
-server="https://server.partners.org:8443"
+server="https://server.company.org:8443"
 
 echo "<html>\n  <head>\n" > report.html
 
 #gets list of ID numbers of all computers in the JSS
-allComputers=`curl -s -u $username:$password $server/JSSResource/computers/match/vascor* -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
-#allComputers=`curl -s -u $username:$password $server/JSSResource/computers -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
+#allComputers=`curl -s -u $username:$password $server/JSSResource/computers/match/vascorelab-imac1* -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
+allComputers=`curl -s -u $username:$password $server/JSSResource/computers -X GET |xpath '//id'|sed 's*</id>*\'$'\n*g' |sed 's*<id>**g'`
 
 #clear ram counters for each thousand
 x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0;x10kram=0;x11kram=0;x12kram=0;x13kram=0;x14kram=0;x15kram=0;x16kram=0;x17kram=0;x18kram=0;x19kram=0;x20kram=0;x21kram=0;x22kram=0;x23kram=0;x24kram=0;x25kram=0;x26kram=0;x27kram=0;x28kram=0;x29kram=0;x30kram=0;x31kram=0;x32kram=0;x33kram=0;x34kram=0;x35kram=0;x36kram=0;x37kram=0;x38kram=0;x39kram=0;x40kram=0;x41kram=0;x42kram=0;x43kram=0;x44kram=0;x45kram=0;x46kram=0;x47kram=0;x48kram=0;x49kram=0;x50kram=0;x51kram=0;x52kram=0;x53kram=0;x54kram=0;x55kram=0;x56kram=0;x57kram=0;x58kram=0;x59kram=0;x60kram=0;x61kram=0;x62kram=0;x63kram=0;x64kram=0;x65kram=0;x66kram=0;x67kram=0;x68kram=0;x69kram=0;x70kram=0;x71kram=0;x72kram=0;x73kram=0;x74kram=0;x75kram=0;x76kram=0;x77kram=0;x78kram=0;x79kram=0;x80kram=0;x81kram=0;x82kram=0;x83kram=0;x84kram=0;x85kram=0;x86kram=0;x87kram=0;x88kram=0;x89kram=0;x90kram=0;x91kram=0;x92kram=0;x93kram=0;x94kram=0;x95kram=0;x96kram=0;x97kram=0;x98kram=0;x99kram=0;x100kram=0
@@ -20,205 +20,205 @@ x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0
 echo "Counting RAM in each computer...."
 for oneComputer in $allComputers; do
     ram=`curl -s -u $username:$password $server/JSSResource/computers/id/$oneComputer |xpath '/computer/hardware/total_ram_mb'|sed 's*<total_ram_mb>*\'$'\n*g' |sed 's*</total_ram_mb>*\'$'\n*g'|tail -2|head -1`
+    echo "computer id $oneComputer has $ram RAM."
     case $ram in
-    1[0-9][0-9][0-9])
+	1[0-9][0-9][0-9])
 	    ((x1kram++));;
-    2[0-9][0-9][0-9])
+	2[0-9][0-9][0-9])
             ((x2kram++));;
-    3[0-9][0-9][0-9])
+	3[0-9][0-9][0-9])
             ((x3kram++));;
-    4[0-9][0-9][0-9])
+	4[0-9][0-9][0-9])
             ((x4kram++));;
-    5[0-9][0-9][0-9])
+	5[0-9][0-9][0-9])
             ((x5kram++));;
-    6[0-9][0-9][0-9])
+	6[0-9][0-9][0-9])
             ((x6kram++));;
-    7[0-9][0-9][0-9])
+	7[0-9][0-9][0-9])
             ((x7kram++));;
-    8[0-9][0-9][0-9])
+	8[0-9][0-9][0-9])
             ((x8kram++));;
-    9[0-9][0-9][0-9])
+	9[0-9][0-9][0-9])
             ((x9kram++));;
-    10[0-9][0-9][0-9])
+	10[0-9][0-9][0-9])
             ((x10kram++));;
-    11[0-9][0-9][0-9])
+	11[0-9][0-9][0-9])
             ((x11kram++));;
-    12[0-9][0-9][0-9])
+	12[0-9][0-9][0-9])
             ((x12kram++));;
-    13[0-9][0-9][0-9])
+	13[0-9][0-9][0-9])
             ((x13kram++));;
-    14[0-9][0-9][0-9])
+	14[0-9][0-9][0-9])
             ((x14kram++));;
-    15[0-9][0-9][0-9])
+	15[0-9][0-9][0-9])
             ((x15kram++));;
-    16[0-9][0-9][0-9])
+	16[0-9][0-9][0-9])
             ((x16kram++));;
-    17[0-9][0-9][0-9])
+	17[0-9][0-9][0-9])
             ((x17kram++));;
-    18[0-9][0-9][0-9])
+	18[0-9][0-9][0-9])
             ((x18kram++));;
-    19[0-9][0-9][0-9])
+	19[0-9][0-9][0-9])
             ((x19kram++));;
-    20[0-9][0-9][0-9])
+	20[0-9][0-9][0-9])
             ((x20kram++));;
-    21[0-9][0-9][0-9])
+	21[0-9][0-9][0-9])
             ((x21kram++));;
-    22[0-9][0-9][0-9])
+	22[0-9][0-9][0-9])
             ((x22kram++));;
-    23[0-9][0-9][0-9])
+	23[0-9][0-9][0-9])
             ((x23kram++));;
-    24[0-9][0-9][0-9])
+	24[0-9][0-9][0-9])
             ((x24kram++));;
-    25[0-9][0-9][0-9])
+	25[0-9][0-9][0-9])
             ((x25kram++));;
-    26[0-9][0-9][0-9])
+	26[0-9][0-9][0-9])
             ((x26kram++));;
-    27[0-9][0-9][0-9])
+	27[0-9][0-9][0-9])
             ((x27kram++));;
-    28[0-9][0-9][0-9])
+	28[0-9][0-9][0-9])
             ((x28kram++));;
-    29[0-9][0-9][0-9])
+	29[0-9][0-9][0-9])
             ((x29kram++));;
-    30[0-9][0-9][0-9])
+	30[0-9][0-9][0-9])
             ((x30kram++));;
-    31[0-9][0-9][0-9])
+	31[0-9][0-9][0-9])
             ((x31kram++));;
-    32[0-9][0-9][0-9])
+	32[0-9][0-9][0-9])
             ((x32kram++));;
-    33[0-9][0-9][0-9])
+	33[0-9][0-9][0-9])
             ((x33kram++));;
-    34[0-9][0-9][0-9])
+	34[0-9][0-9][0-9])
             ((x34kram++));;
-    35[0-9][0-9][0-9])
+	35[0-9][0-9][0-9])
             ((x35kram++));;
-    36[0-9][0-9][0-9])
+	36[0-9][0-9][0-9])
             ((x36kram++));;
-    37[0-9][0-9][0-9])
+	37[0-9][0-9][0-9])
             ((x37kram++));;
-    38[0-9][0-9][0-9])
+	38[0-9][0-9][0-9])
             ((x38kram++));;
-    39[0-9][0-9][0-9])
+	39[0-9][0-9][0-9])
             ((x39kram++));;
-    40[0-9][0-9][0-9])
+	40[0-9][0-9][0-9])
             ((x40kram++));;
-    41[0-9][0-9][0-9])
+	41[0-9][0-9][0-9])
             ((x41kram++));;
-    42[0-9][0-9][0-9])
+	42[0-9][0-9][0-9])
             ((x42kram++));;
-    43[0-9][0-9][0-9])
+	43[0-9][0-9][0-9])
             ((x43kram++));;
-    44[0-9][0-9][0-9])
+	44[0-9][0-9][0-9])
             ((x44kram++));;
-    45[0-9][0-9][0-9])
+	45[0-9][0-9][0-9])
             ((x45kram++));;
-    46[0-9][0-9][0-9])
+	46[0-9][0-9][0-9])
             ((x46kram++));;
-    47[0-9][0-9][0-9])
+	47[0-9][0-9][0-9])
             ((x47kram++));;
-    48[0-9][0-9][0-9])
+	48[0-9][0-9][0-9])
             ((x48kram++));;
-    49[0-9][0-9][0-9])
+	49[0-9][0-9][0-9])
             ((x49kram++));;
-    50[0-9][0-9][0-9])
+	50[0-9][0-9][0-9])
             ((x50kram++));;
-    51[0-9][0-9][0-9])
+	51[0-9][0-9][0-9])
             ((x51kram++));;
-    52[0-9][0-9][0-9])
+	52[0-9][0-9][0-9])
             ((x52kram++));;
-    53[0-9][0-9][0-9])
+	53[0-9][0-9][0-9])
             ((x53kram++));;
-    54[0-9][0-9][0-9])
+	54[0-9][0-9][0-9])
             ((x54kram++));;
-    55[0-9][0-9][0-9])
+	55[0-9][0-9][0-9])
             ((x55kram++));;
-    56[0-9][0-9][0-9])
+	56[0-9][0-9][0-9])
             ((x56kram++));;
-    57[0-9][0-9][0-9])
+	57[0-9][0-9][0-9])
             ((x57kram++));;
-    58[0-9][0-9][0-9])
+	58[0-9][0-9][0-9])
             ((x58kram++));;
-    59[0-9][0-9][0-9])
+	59[0-9][0-9][0-9])
             ((x59kram++));;
-    60[0-9][0-9][0-9])
+	60[0-9][0-9][0-9])
             ((x60kram++));;
-    61[0-9][0-9][0-9])
+	61[0-9][0-9][0-9])
             ((x61kram++));;
-    62[0-9][0-9][0-9])
+	62[0-9][0-9][0-9])
             ((x62kram++));;
-    63[0-9][0-9][0-9])
+	63[0-9][0-9][0-9])
             ((x63kram++));;
-    64[0-9][0-9][0-9])
+	64[0-9][0-9][0-9])
             ((x64kram++));;
-    65[0-9][0-9][0-9])
+	65[0-9][0-9][0-9])
             ((x65kram++));;
-    66[0-9][0-9][0-9])
+	66[0-9][0-9][0-9])
             ((x66kram++));;
-    67[0-9][0-9][0-9])
+	67[0-9][0-9][0-9])
             ((x67kram++));;
-    68[0-9][0-9][0-9])
+	68[0-9][0-9][0-9])
             ((x68kram++));;
-    69[0-9][0-9][0-9])
+	69[0-9][0-9][0-9])
             ((x69kram++));;
-    70[0-9][0-9][0-9])
+	70[0-9][0-9][0-9])
             ((x70kram++));;
-    71[0-9][0-9][0-9])
+	71[0-9][0-9][0-9])
             ((x71kram++));;
-    72[0-9][0-9][0-9])
+	72[0-9][0-9][0-9])
             ((x72kram++));;
-    73[0-9][0-9][0-9])
+	73[0-9][0-9][0-9])
             ((x73kram++));;
-    74[0-9][0-9][0-9])
+	74[0-9][0-9][0-9])
             ((x74kram++));;
-    75[0-9][0-9][0-9])
+	75[0-9][0-9][0-9])
             ((x75kram++));;
-    76[0-9][0-9][0-9])
+	76[0-9][0-9][0-9])
             ((x76kram++));;
-    77[0-9][0-9][0-9])
+	77[0-9][0-9][0-9])
             ((x77kram++));;
-    78[0-9][0-9][0-9])
+	78[0-9][0-9][0-9])
             ((x78kram++));;
-    79[0-9][0-9][0-9])
+	79[0-9][0-9][0-9])
             ((x79kram++));;
-    80[0-9][0-9][0-9])
+	80[0-9][0-9][0-9])
             ((x80kram++));;
-    81[0-9][0-9][0-9])
+	81[0-9][0-9][0-9])
             ((x81kram++));;
-    82[0-9][0-9][0-9])
+	82[0-9][0-9][0-9])
             ((x82kram++));;
-    83[0-9][0-9][0-9])
+	83[0-9][0-9][0-9])
             ((x83kram++));;
-    84[0-9][0-9][0-9])
+	84[0-9][0-9][0-9])
             ((x84kram++));;
-    85[0-9][0-9][0-9])
+	85[0-9][0-9][0-9])
             ((x85kram++));;
-    86[0-9][0-9][0-9])
+	86[0-9][0-9][0-9])
             ((x86kram++));;
-    87[0-9][0-9][0-9])
+	87[0-9][0-9][0-9])
             ((x87kram++));;
-    88[0-9][0-9][0-9])
+	88[0-9][0-9][0-9])
             ((x88kram++));;
-    89[0-9][0-9][0-9])
+	89[0-9][0-9][0-9])
             ((x89kram++));;
-    90[0-9][0-9][0-9])
+	90[0-9][0-9][0-9])
             ((x90kram++));;
-
-    91[0-9][0-9][0-9])
+	91[0-9][0-9][0-9])
             ((x91kram++));;
-    92[0-9][0-9][0-9])
+	92[0-9][0-9][0-9])
             ((x92kram++));;
-    93[0-9][0-9][0-9])
+	93[0-9][0-9][0-9])
             ((x93kram++));;
-    94[0-9][0-9][0-9])
+	94[0-9][0-9][0-9])
             ((x94kram++));;
-    95[0-9][0-9][0-9])
+	95[0-9][0-9][0-9])
             ((x95kram++));;
-    96[0-9][0-9][0-9])
+	96[0-9][0-9][0-9])
             ((x96kram++));;
-    97[0-9][0-9][0-9])
+	97[0-9][0-9][0-9])
             ((x97kram++));;
-    98[0-9][0-9][0-9])
+	98[0-9][0-9][0-9])
             ((x98kram++));;
-    99[0-9][0-9][0-9])
+	99[0-9][0-9][0-9])
             ((x99kram++));;
     esac
 done
@@ -347,6 +347,8 @@ thitnYearsAgo=$(($today-409968000))
 fourteenYearsAgo=$(($today-441504000))
 fifTeenYearsAgo=$(($today-473040000))
 
+echo "today $today\n1year $oneYearAgo\n2years $twoYearsAgo\n3years $threeYearsAgo"
+
 xnewCompAge=0
 xSMyoCompAge=0
 x1yoCompAge=0
@@ -371,55 +373,55 @@ echo "Calculating age of each computer...."
 for oneComputer in $allComputers; do
     ageEpochlong=`curl -s -u $username:$password $server/JSSResource/computers/id/$oneComputer |xpath '/computer/purchasing/po_date_epoch'|sed 's*<po_date_epoch>*\'$'\n*g' |sed 's*</po_date_epoch>*\'$'\n*g'|tail -2|head -1`
     ageEpoch=$(($ageEpochlong/1000))
-    if (($ageEpoch >= $today-$sixMonthsAgo)); then
+    echo "ID $oneComputer is $ageEpoch seconds old"
+    if (($ageEpoch >= $sixMonthsAgo)); then
 	((xnewCompAge++));
-    fi
-    if (($ageEpoch <= $sixMonthsAgo && $ageEpoch >= $oneYearAgo)); then
+    elif
+	(($ageEpoch <= $sixMonthsAgo && $ageEpoch >= $oneYearAgo)); then
 	((xSMyoCompAge++));
-    fi
-    if (($ageEpoch <= $oneYearAgo && $ageEpoch >= $twoYearsAgo)); then
+    elif
+	(($ageEpoch <= $oneYearAgo && $ageEpoch >= $twoYearsAgo)); then
 	((x1yoCompAge++));
-    fi
-    if (($ageEpoch <= $twoYearsAgo && $ageEpoch >= $threeYearsAgo)); then
+    elif
+     (($ageEpoch <= $twoYearsAgo && $ageEpoch >= $threeYearsAgo)); then
 	((x2yoCompAge++));
-    fi
-    if (($ageEpoch <= $threeYearsAgo && $ageEpoch >= $fourYearsAgo)); then
+    elif
+     (($ageEpoch <= $threeYearsAgo && $ageEpoch >= $fourYearsAgo)); then
 	((x3yoCompAge++));
-    fi
-    if (($ageEpoch <= $fourYearsAgo && $ageEpoch >= $fiveYearsAgo)); then
+    elif
+	(($ageEpoch <= $fourYearsAgo && $ageEpoch >= $fiveYearsAgo)); then
 	((x4yoCompAge++));
-    fi
-    if (($ageEpoch <= $fiveYearsAgo && $ageEpoch >= $sixYearsAgo)); then
+    elif
+	(($ageEpoch <= $fiveYearsAgo && $ageEpoch >= $sixYearsAgo)); then
 	((x5yoCompAge++));
-    fi
-    if (($ageEpoch <= $sixYearsAgo && $ageEpoch >= $sevYearsAgo)); then
+    elif
+	(($ageEpoch <= $sixYearsAgo && $ageEpoch >= $sevYearsAgo)); then
 	((x6yoCompAge++));
-    fi
-    if (($ageEpoch <= $sevYearsAgo && $ageEpoch >= $eightYearsAgo)); then
+    elif
+	(($ageEpoch <= $sevYearsAgo && $ageEpoch >= $eightYearsAgo)); then
 	((x7yoCompAge++));
-    fi
-    if (($ageEpoch <= $eightYearsAgo && $ageEpoch >= $nineYearsAgo)); then
+    elif
+	(($ageEpoch <= $eightYearsAgo && $ageEpoch >= $nineYearsAgo)); then
 	((x8yoCompAge++));
-    fi
-    if (($ageEpoch <= $nineYearsAgo && $ageEpoch >= $tenYearsAgo)); then
+    elif
+	(($ageEpoch <= $nineYearsAgo && $ageEpoch >= $tenYearsAgo)); then
 	((x9yoCompAge++));
-    fi
-    if (($ageEpoch <= $tenYearsAgo && $ageEpoch >= $elevYearsAgo)); then
+    elif
+	(($ageEpoch <= $tenYearsAgo && $ageEpoch >= $elevYearsAgo)); then
 	((x10yoCompAge++));
-    fi
-    if (($ageEpoch <= $elevYearsAgo && $ageEpoch >= $twelvYearsAgo)); then
+    elif
+	(($ageEpoch <= $elevYearsAgo && $ageEpoch >= $twelvYearsAgo)); then
 	((x11yoCompAge++));
-    fi
-    if (($ageEpoch <= $twelvYearsAgo && $ageEpoch >= $thitnYearsAgo)); then
+    elif
+	(($ageEpoch <= $twelvYearsAgo && $ageEpoch >= $thitnYearsAgo)); then
 	((x12yoCompAge++));
-    fi
-    if (($ageEpoch <= $thitnYearsAgo && $ageEpoch >= $fourteenYearsAgo)); then
+    elif
+	(($ageEpoch <= $thitnYearsAgo && $ageEpoch >= $fourteenYearsAgo)); then
 	((x13yoCompAge++));
-    fi
-    if (($ageEpoch <= $fourteenYearsAgo && $ageEpoch >= $fifTeenYearsAgo)); then
+    elif
+	(($ageEpoch <= $fourteenYearsAgo && $ageEpoch >= $fifTeenYearsAgo)); then
 	((x14yoCompAge++));
-    fi
-    if (($ageEpoch <= $fifTeenYearsAgo)); then
+    else
         ((x15yoCompAge++));
     fi
 
@@ -459,41 +461,45 @@ x104=0
 x103=0
 x102=0
 x101=0
+unknownOS=0
 
 for oneComputer in $allComputers; do
     osMajKey=`curl -s -u $username:$password $server/JSSResource/computers/id/$oneComputer |xpath '/computer/hardware/os_version'|sed 's*<os_version>*\'$'\n*g' |sed 's*</os_version>*\'$'\n*g'|tail -2|head -1|awk -F. '{print $2}'`
+    echo "computer id $oneComputer has $osMajKey"
     if [ $osMajKey -eq 11 ]; then
         ((x1011++))
-    fi
-    if [ $osMajKey -eq 10 ]; then
+    elif
+	[ $osMajKey -eq 10 ]; then
         ((x1010++))
-    fi
-    if [ $osMajKey -eq 9 ]; then
+    elif
+	[ $osMajKey -eq 9 ]; then
 	((x109++))
-    fi
-    if [ $osMajKey -eq 8 ]; then
+    elif
+	[ $osMajKey -eq 8 ]; then
         ((x108++))
-    fi
-    if [ $osMajKey -eq 7 ]; then
+    elif
+	[ $osMajKey -eq 7 ]; then
         ((x107++))
-    fi
-    if [ $osMajKey -eq 6 ]; then
+    elif
+	[ $osMajKey -eq 6 ]; then
         ((x106++))
-    fi
-    if [ $osMajKey -eq 5 ]; then
+    elif
+	[ $osMajKey -eq 5 ]; then
         ((x105++))
-    fi
-    if [ $osMajKey -eq 4 ]; then
+    elif
+	[ $osMajKey -eq 4 ]; then
         ((x104++))
-    fi
-    if [ $osMajKey -eq 3 ]; then
+    elif
+	[ $osMajKey -eq 3 ]; then
         ((x103++))
-    fi
-    if [ $osMajKey -eq 2 ]; then
+    elif
+	[ $osMajKey -eq 2 ]; then
         ((x102++))
-    fi
-    if [ $osMajKey -eq 1 ]; then
+    elif
+	[ $osMajKey -eq 1 ]; then
         ((x101++))
+    else
+	((unknownOS++))
     fi
 done
 
@@ -507,8 +513,8 @@ echo "['OS 6 Snow Leopard', $x106]," >> report.html
 echo "['OS 5 Leopard', $x105]," >> report.html
 echo "['OS 4 Tiger', $x104]," >> report.html
 echo "['OS 3 Panther', $x103]," >> report.html
+echo "['Unknown OS', $unknownOS]" >> report.html
 cat osVers-footer.html >> report.html
-
 
 #Hardware Type
 echo "Determining Hardware Type"
@@ -525,6 +531,7 @@ iMac=0
 
 for oneComputer in $allComputers; do
     hardwareModel=`curl -s -u $username:$password $server/JSSResource/computers/id/$oneComputer |xpath '/computer/hardware/model'|sed 's*<model>*\'$'\n*g' |sed 's*</model>*\'$'\n*g'|tail -2|head -1|awk -F\( '{print $1}'`
+    echo "computer $oneComputer has model $hardwareModel"
     model=`echo $hardwareModel | grep -i mini`
     if [ ! -z "$model" ]; then
 	((Mini++))
