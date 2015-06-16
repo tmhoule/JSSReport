@@ -10,3 +10,5 @@ Edit MakeReport.sh to have your name/password & server.
 run the tool.  (./makeReport).
 
 Open report.html in a browser.
+
+![alt tag](http://i.imgur.com/kez7gTR.png)
