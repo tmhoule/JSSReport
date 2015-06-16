@@ -12,3 +12,5 @@ run the tool.  (./makeReport).
 Open report.html in a browser.
 
 ![alt tag](http://i.imgur.com/kez7gTR.png)
+--
+![alt tag](http://i.imgur.com/gwLyRMr.png)
