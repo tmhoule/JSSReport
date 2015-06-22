@@ -586,6 +586,11 @@ for oneComputer in $allComputers; do
         ((iMac++))
     fi
 
+    model=$(echo "$hardwareModel" | grep -i MacPro)
+    if [ ! -z "$model" ]; then
+        ((MacPro++))
+    fi
+
 done
 
 {
@@ -597,6 +602,7 @@ done
     echo "['G5', $G5],"
     echo "['VMWare', $Vmware],"
     echo "['iMac', $iMac],"
+    echo "['MacPro', $MacPro],"
     cat model-footer.html
 } >> report.html
 
