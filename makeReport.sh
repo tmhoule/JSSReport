@@ -3,8 +3,8 @@
 #11June2015
 #To create a report of hardware info from JSS API
 
-username="od"
-password="22"
+username="User"
+password="Passw0rd"
 server="https://server.company.org:8443"
 
 #gets list of ID numbers of all computers in the JSS
@@ -21,7 +21,7 @@ for oneComputer in $allComputers; do
     ((numComps++))
 done
 
-echo "<html>\n  <head>\n <title>$todayDate --  $numComps Computers in $server</title>" > report.html
+echo "<html>\n  <head>\n <title>$todayDate --  $numComps Computers in $server</title>" > report-temp.html
 
 #clear ram counters for each thousand
 x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0;x10kram=0
@@ -350,7 +350,7 @@ done
     echo "['99G', $x90kram],"
     echo "['100G', $x100kram],"
     cat ./ram-footer.html
-} >> report.html
+} >> report-temp.html
 
 #find age of computers
 #initiliaze variables
@@ -461,7 +461,7 @@ done
     echo "['14 years old', $x14yoCompAge],"
     echo "['No Date Available', $x15yoCompAge],"
     cat age-footer.html
-} >> report.html
+} >> report-temp.html
 
 #OS VERSIONS
 echo "Determining OS Versions..."
@@ -527,7 +527,7 @@ done
     echo "['OS 3 Panther', $x103],"
     echo "['Unknown OS', $unknownOS]"
     cat osVers-footer.html
-} >> report.html
+} >> report-temp.html
 
 #Hardware Type
 echo "Determining Hardware Type"
@@ -604,10 +604,11 @@ done
     echo "['iMac', $iMac],"
     echo "['MacPro', $MacPro],"
     cat model-footer.html
-} >> report.html
+} >> report-temp.html
 
 echo "Closing Report...."
 ##End - close the report file
-cat footer.html >> report.html
+cat footer.html >> report-temp.html
+mv report-temp.html report.html
 
 exit 0
