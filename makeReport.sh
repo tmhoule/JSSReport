@@ -16,12 +16,13 @@ allComputers=$(curl -s -u "$username:$password" "$server/JSSResource/computers" 
 
 todayDate=$(date +"%d-%b-%Y")
 
+#count computers for title of webpage.
 numComps=0
 for oneComputer in $allComputers; do
     ((numComps++))
 done
 
-echo "<html>\n  <head>\n <title>$todayDate --  $numComps Computers in $server</title>" > report-temp.html
+echo "<html>  <head> <title>$todayDate --  $numComps Computers in $server</title><body>" > report-temp.html
 
 #clear ram counters for each thousand
 x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0;x10kram=0
@@ -607,6 +608,10 @@ done
 } >> report-temp.html
 
 echo "Closing Report...."
+echo "Report Generated: $todayDate <BR>"  >> report-temp.html
+echo "$numComps Computers<BR>" >> report-temp.html
+echo "Server: $server<P>" >> report-temp.html
+
 ##End - close the report file
 cat footer.html >> report-temp.html
 mv report-temp.html report.html
