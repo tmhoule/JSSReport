@@ -13,7 +13,6 @@ username="User"
 password="Passw0rd"
 server="https://server.company.org:8443"
 
-
 #gets list of ID numbers of all computers in the JSS
 #allComputers=$(curl -s -u "$username:$password" "$server/JSSResource/computers/match/vascor*" -X GET | xpath '//id' | sed 's*</id>*\'$'\n*g' | sed 's*<id>**g')
 allComputers=$(curl -s -u "$username:$password" "$server/JSSResource/computers" -X GET \
@@ -29,7 +28,7 @@ for oneComputer in $allComputers; do
     ((numComps++))
 done
 echo "Found $numComps Computers"
-echo "<html>  <head> <title>$todayDate --  $numComps Computers in $server</title></head><body>" > /tmp/report-temp.html
+echo "<html>  <head> <title>$todayDate --  $numComps Computers in $server</title></head><body>" > /tmp/report-temp$$.html
 
 #clear ram counters for each thousand
 x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0;x10kram=0
@@ -379,7 +378,6 @@ done
     echo "['98G', $x98kram],"
     echo "['99G', $x90kram],"
     echo "['100G', $x100kram],"
-#    cat ./ram-footer.html
 
 echo "
         ]);
@@ -396,7 +394,7 @@ echo "
     </script>
 "
 
-} >> /tmp/report-temp.html
+} >> /tmp/report-temp$$.html
 
 #find age of computers
 #initiliaze variables
@@ -488,7 +486,7 @@ for oneComputer in $allComputers; do
 done
 
 {
-#    cat age-header.html
+
 echo "
     <!--Load the AJAX API-->
     <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
@@ -545,7 +543,7 @@ echo "
     </script>
 " 
     
-} >> /tmp/report-temp.html
+} >> /tmp/report-temp$$.html
 
 #OS VERSIONS
 echo "Determining OS Versions..."
@@ -648,7 +646,7 @@ echo "
     </script>
 "
 
-} >> /tmp/report-temp.html
+} >> /tmp/report-temp$$.html
 
 #Hardware Type
 echo "Determining Hardware Type"
@@ -762,7 +760,7 @@ echo "
     </script>
 "
 
-} >> /tmp/report-temp.html
+} >> /tmp/report-temp$$.html
 
 echo "Closing Report...."
 echo "
@@ -773,13 +771,13 @@ echo "
     <div id="chart_divMod"></div>
   </body>
 </html>
-"  >> /tmp/report-temp.html
-echo "$numComps Computers<BR>" >> /tmp/report-temp.html
-echo "Server: $server<br>" >> /tmp/report-temp.html
-echo "Report Started $todayDate<br>" >> /tmp/report-temp.html
+"  >> /tmp/report-temp$$.html
+echo "$numComps Computers<BR>" >> /tmp/report-temp$$.html
+echo "Server: $server<br>" >> /tmp/report-temp$$.html
+echo "Report Started $todayDate<br>" >> /tmp/report-temp$$.html
 todayDateL8r=$(date +"%d-%b-%Y %T")
-echo "Report Finished $todayDateL8r"  >> /tmp/report-temp.html
+echo "Report Finished $todayDateL8r"  >> /tmp/report-temp$$.html
 
-mv /tmp/report-temp.html /Library/WebServer/Documents/report.html
+mv /tmp/report-temp$$.html /Library/WebServer/Documents/report.html
 
 exit 0
