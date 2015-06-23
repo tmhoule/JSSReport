@@ -3,9 +3,16 @@
 #11June2015
 #To create a report of hardware info from JSS API
 
+#To Use:
+#Change Username, Password, and JSS server as below.
+#
+#Report is moved to /Library/WebServer/Documents/report.html
+#Change last line to put it in different directory.
+
 username="User"
 password="Passw0rd"
 server="https://server.company.org:8443"
+
 
 #gets list of ID numbers of all computers in the JSS
 #allComputers=$(curl -s -u "$username:$password" "$server/JSSResource/computers/match/vascor*" -X GET | xpath '//id' | sed 's*</id>*\'$'\n*g' | sed 's*<id>**g')
@@ -769,12 +776,9 @@ echo "
 "  >> /tmp/report-temp.html
 echo "$numComps Computers<BR>" >> /tmp/report-temp.html
 echo "Server: $server<br>" >> /tmp/report-temp.html
-echo "Report Generated $todayDate" >> /tmp/report-temp.html
-
-##End - close the report file
-#cat footer.html >> /tmp/report-temp.html
-
-
+echo "Report Started $todayDate<br>" >> /tmp/report-temp.html
+todayDateL8r=$(date +"%d-%b-%Y %T")
+echo "Report Finished $todayDateL8r"  >> /tmp/report-temp.html
 
 mv /tmp/report-temp.html /Library/WebServer/Documents/report.html
 
