@@ -14,15 +14,15 @@ allComputers=$(curl -s -u "$username:$password" "$server/JSSResource/computers" 
     | sed 's*</id>*\'$'\n*g' \
     | sed 's*<id>**g')
 
-todayDate=$(date +"%d-%b-%Y")
+todayDate=$(date +"%d-%b-%Y %T")
 
 #count computers for title of webpage.
 numComps=0
 for oneComputer in $allComputers; do
     ((numComps++))
 done
-
-echo "<html>  <head> <title>$todayDate --  $numComps Computers in $server</title></head><body>" > report-temp.html
+echo "Found $numComps Computers"
+echo "<html>  <head> <title>$todayDate --  $numComps Computers in $server</title></head><body>" > /tmp/report-temp.html
 
 #clear ram counters for each thousand
 x1kram=0;x2kram=0;x3kram=0;x4kram=0;x5kram=0;x6kram=0;x7kram=0;x8kram=0;x9kram=0;x10kram=0
@@ -249,7 +249,29 @@ for oneComputer in $allComputers; do
 done
 
 {
-    cat ./ram-header.html
+    #print ram header html code
+    echo "    <!--Load the AJAX API-->
+    <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
+    <script type=\"text/javascript\">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Ram');
+      data.addColumn('number','Macs');
+      data.addRows([
+" 
+
     echo "['1G', $x1kram],"
     echo "['2G', $x2kram],"
     echo "['3G', $x3kram],"
@@ -350,8 +372,24 @@ done
     echo "['98G', $x98kram],"
     echo "['99G', $x90kram],"
     echo "['100G', $x100kram],"
-    cat ./ram-footer.html
-} >> report-temp.html
+#    cat ./ram-footer.html
+
+echo "
+        ]);
+
+        // Set chart options
+        var options = {'title':'Ram in Macs',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divRam'));
+        chart.draw(data, options);
+      }
+    </script>
+"
+
+} >> /tmp/report-temp.html
 
 #find age of computers
 #initiliaze variables
@@ -443,7 +481,30 @@ for oneComputer in $allComputers; do
 done
 
 {
-    cat age-header.html
+#    cat age-header.html
+echo "
+    <!--Load the AJAX API-->
+    <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
+    <script type=\"text/javascript\">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Ram');
+      data.addColumn('number','Macs');
+      data.addRows([
+"
+
     echo "['Less than 6 months', $xnewCompAge],"
     echo "['6 months old', $xSMyoCompAge],"
     echo "['1 year old', $x1yoCompAge],"
@@ -461,8 +522,23 @@ done
     echo "['13 years old', $x13yoCompAge],"
     echo "['14 years old', $x14yoCompAge],"
     echo "['No Date Available', $x15yoCompAge],"
-    cat age-footer.html
-} >> report-temp.html
+
+echo "
+        ]);
+
+        // Set chart options
+        var options = {'title':'Age of Macs',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.BarChart(document.getElementById('chart_divAge'));
+        chart.draw(data, options);
+      }
+    </script>
+" 
+    
+} >> /tmp/report-temp.html
 
 #OS VERSIONS
 echo "Determining OS Versions..."
@@ -516,7 +592,29 @@ for oneComputer in $allComputers; do
 done
 
 {
-    cat osVers-header.html
+echo "
+	    <!--Load the AJAX API-->
+    <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
+    <script type=\"text/javascript\">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Ram');
+      data.addColumn('number','Macs');
+      data.addRows([
+"
+
     echo "['OS 11 El Capitan', $x1011],"
     echo "['OS 10 Yosemite', $x1010],"
     echo "['OS 9 Mavericks', $x109],"
@@ -527,8 +625,23 @@ done
     echo "['OS 4 Tiger', $x104],"
     echo "['OS 3 Panther', $x103],"
     echo "['Unknown OS', $unknownOS]"
-    cat osVers-footer.html
-} >> report-temp.html
+
+echo "
+        ]);
+
+        // Set chart options
+        var options = {'title':'Major OS Version',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divOsv'));
+        chart.draw(data, options);
+      }
+    </script>
+"
+
+} >> /tmp/report-temp.html
 
 #Hardware Type
 echo "Determining Hardware Type"
@@ -595,7 +708,29 @@ for oneComputer in $allComputers; do
 done
 
 {
-    cat model-header.html
+echo "
+    <!--Load the AJAX API-->
+    <script type=\"text/javascript\" src=\"https://www.google.com/jsapi\"></script>
+    <script type=\"text/javascript\">
+
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+      data.addColumn('string','Model');
+      data.addColumn('number','Macs');
+      data.addRows([
+"
+
     echo "['Mac Mini', $Mini],"
     echo "['MacBookPro', $MacBookPro],"
     echo "['MacBookAir', $MacBookAir],"
@@ -604,16 +739,40 @@ done
     echo "['VMWare', $Vmware],"
     echo "['iMac', $iMac],"
     echo "['MacPro', $MacPro],"
-    cat model-footer.html
-} >> report-temp.html
+
+echo "
+        ]);
+
+        // Set chart options
+        var options = {'title':'Mac Model Type',
+                       'width':800,
+                       'height':600};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_divMod'));
+        chart.draw(data, options);
+      }
+    </script>
+"
+
+} >> /tmp/report-temp.html
 
 echo "Closing Report...."
-echo "Report Generated: $todayDate <BR>"  >> report-temp.html
-echo "$numComps Computers<BR>" >> report-temp.html
-echo "Server: $server<P>" >> report-temp.html
+echo "
+    <!--Div that will hold the pie chart-->
+    <div id="chart_divAge"></div>
+    <div id="chart_divRam"></div>
+    <div id="chart_divOsv"></div>
+    <div id="chart_divMod"></div>
+  </body>
+</html>
+"  >> /tmp/report-temp.html
+echo "$numComps Computers<BR>" >> /tmp/report-temp.html
+echo "Server: $server<br>" >> /tmp/report-temp.html
+echo "Report Generated $todayDate" >> /tmp/report-temp.html
 
 ##End - close the report file
-cat footer.html >> report-temp.html
-mv report-temp.html report.html
+cat footer.html >> /tmp/report-temp.html
+mv /tmp/report-temp.html /Library/WebServer/Documents/report.html
 
 exit 0
