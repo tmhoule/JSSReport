@@ -772,7 +772,10 @@ echo "Server: $server<br>" >> /tmp/report-temp.html
 echo "Report Generated $todayDate" >> /tmp/report-temp.html
 
 ##End - close the report file
-cat footer.html >> /tmp/report-temp.html
+#cat footer.html >> /tmp/report-temp.html
+
+
+
 mv /tmp/report-temp.html /Library/WebServer/Documents/report.html
 
 exit 0
