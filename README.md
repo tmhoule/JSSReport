@@ -7,12 +7,19 @@ Creates pretty reports from JSS data.
 
 ## Reports included
 OSX Major Versions - number of computers at each
+
 General Mac Model type
+
 Specific Mac model list count
+
 Filevault Encryption compliance
+
 Processor type count
+
 Instaled Memory amount
+
 Computers purchased each year
+
 Computers enrolled each month count
 
 ## Usage
