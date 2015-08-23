@@ -35,23 +35,23 @@ make search critera set to all machines you want in the report.
 
 Under display tag, choose the following
 
-   Computer - Last Enrollment
+  -- Computer - Last Enrollment
 
-   Hardware - Model
+ --   Hardware - Model
 
-   Hardware - Model Identifier
+  -- Hardware - Model Identifier
 
-   Hardware - Processor Type
+   -- Hardware - Processor Type
 
-   Hardware - Total RAM MB
+   -- Hardware - Total RAM MB
 
-   Operating System - Operating System
+   -- Operating System - Operating System
 
-   Purchasing - PO Date
+   -- Purchasing - PO Date
 
-   Purchasing - Warranty Expiration
+   -- Purchasing - Warranty Expiration
 
-   Storage - FileVault 2 Status
+   -- Storage - FileVault 2 Status
 
 Run the MakeReport tool    `/path/to/makeReport.sh`
 
