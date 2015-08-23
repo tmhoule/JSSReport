@@ -29,18 +29,28 @@ Make sure makeReport.sh is executable: `chmod +x makeReport.sh`
 
 Edit makeReport.sh to include your username, password, server, and report name.
 
-4. Create an Advanced Computer Search on your JSS
-name it whatever you called it in step 3
-make search critera all machines you want in the report.  
+Create an Advanced Computer Search on your JSS - name it whatever you called it in step 3
+
+make search critera set to all machines you want in the report.  
+
 Under display tag, choose the following
+
    Computer - Last Enrollment
+
    Hardware - Model
+
    Hardware - Model Identifier
+
    Hardware - Processor Type
+
    Hardware - Total RAM MB
+
    Operating System - Operating System
+
    Purchasing - PO Date
+
    Purchasing - Warranty Expiration
+
    Storage - FileVault 2 Status
 
 Run the MakeReport tool    `/path/to/makeReport.sh`
