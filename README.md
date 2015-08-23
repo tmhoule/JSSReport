@@ -2,7 +2,7 @@
 
 Creates pretty reports from JSS data.
 ## Written by Todd Houle - Partners Healthcare
-## Ridiclously huge amounts of code contributed by Mike Morales. Go Mike!
+# Ridiclously huge amounts of code contributed by Mike Morales. Go Mike!
 
 
 ## Reports included
