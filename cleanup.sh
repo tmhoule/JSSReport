@@ -6,8 +6,8 @@
 
 ########### EDIT THESE ##################################
 JSSURL="https://jss.edu:8443"
-user="apitemp"
-pass="xxx"
+user="xxxx"
+pass="xxxx"
 ############################################################
 
 
@@ -69,7 +69,7 @@ for thisPolicy in "${arr[@]}"; do
     done
 
     #look for unused smartGroups
-    smrtGrpInPol=`xpath /tmp/JSSCleanup/policy$thisPolicy.xml '/policy/scope'|grep "<id>"| awk -F\> '{print $2}'|awk -F\< '{print $1}'`
+    smrtGrpInPol=`xpath /tmp/JSSCleanup/policy$thisPolicy.xml '/policy/scope/computer_groups'|grep "<id>"| awk -F\> '{print $2}'|awk -F\< '{print $1}'`
     smrtGrpArr=($smrtGrpInPol)
     for oneGrp in "${smrtGrpArr[@]}"; do
 	echo "group ID $oneGrp used in policy number $thisPolicy"
@@ -82,6 +82,24 @@ for thisPolicy in "${arr[@]}"; do
             GROUPSUSED+=($oneGrp)
         fi
     done
+
+    #look for unused smartgroupsExcludedInPolicies
+    smrtGrpInPolEx=`xpath /tmp/JSSCleanup/policy$thisPolicy.xml '/policy/scope/exclusions/computer_groups'|grep "<id>"| awk -F\> '{print $2}'|awk -F\< '{print $1}'`
+    smrtGrpArr2=($smrtGrpInPolEx)
+    for oneGrp in "${smrtGrpArr2[@]}"; do
+	echo "group exclusion $oneGrp used in policy number $thisPolicy"
+        if [[ " ${GROUPSUSED[@]} " =~ " ${oneGrp} " ]]; then
+            # whatever you want to do when arr contains value 
+            echo "script $oneGrp is already listed in use"
+        else
+            # whatever you want to do when arr doesn't contain value 
+            echo "adding grp $oneGrp to GRPUSED array"
+            GROUPSUSED+=($oneGrp)
+        fi
+    done
+
+
+
 done
 
 
