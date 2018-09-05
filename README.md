@@ -6,6 +6,8 @@ Creates pretty reports from JSS data.
 
 
 ## Reports included
+Year of Manufacture of computer
+
 OSX Major Versions - number of computers at each
 
 General Mac Model type
@@ -17,8 +19,6 @@ Filevault Encryption compliance
 Processor type count
 
 Instaled Memory amount
-
-Computers purchased each year
 
 Computers enrolled each month count
 
@@ -37,7 +37,7 @@ Under display tag, choose the following
 
   -- Computer - Last Enrollment
 
- --   Hardware - Model
+   --   Hardware - Model
 
   -- Hardware - Model Identifier
 
@@ -45,11 +45,9 @@ Under display tag, choose the following
 
    -- Hardware - Total RAM MB
 
+    -- Hardware - Serial Number
+
    -- Operating System - Operating System
-
-   -- Purchasing - PO Date
-
-   -- Purchasing - Warranty Expiration
 
    -- Storage - FileVault 2 Status
 
