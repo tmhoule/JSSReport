@@ -1,8 +1,8 @@
 # JSSReport
 
 Creates pretty reports from JSS data.
-## Written by Todd Houle - Partners Healthcare
-### Ridiclously huge amounts of code contributed by Mike Morales. Go Mike!
+## Written by Todd Houle
+### Ridiclously huge amounts of code contributed by mm2270. Go Mike!
 
 
 ## Reports included
