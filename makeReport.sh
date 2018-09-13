@@ -21,10 +21,12 @@ password="p@ssw0rd"
 server="https://server.company.org:8443"
 
 ## Variables for final report file and JSS Advanced Search name
-final_report="/private/tmp/Mac-report_${dateString}.html"
 savedSearchName="JSSReport"
+reportOutputFile="/Library/WebServer/Documents/report.html"
 
 ###################
+#temp file
+final_report="/private/tmp/Mac-report_${dateString}.html"
 
 ## Get the script start time in seconds
 timeStart=$(date +"%s")
@@ -706,8 +708,7 @@ echo "Script run time: $(expr $timeEnd - $timeStart) seconds"
 todayDateL8r=$(date +"%d-%b-%Y %T")
 echo "Reported Generated: $todayDateL8r<br>" >> "$final_report"
 
-cp "$final_report" /Library/WebServer/Documents/report.html
-cp "$final_report" /Library/WebServer/Documents/
+cp "$final_report" "$reportOutputFile"
 
 #echo "Creating PDF report..."
 #fileName=$(echo "$final_report" | awk -F'/' '{print $NF}')
