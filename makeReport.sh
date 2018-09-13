@@ -3,7 +3,7 @@
 ## Original script created by Todd Houle
 ## 11June2015
 
-## Ridiculously huge amounts of code contribued by Mike Morales
+## Ridiculously huge amounts of code contribued by MM2270
 ## Figured to use SavedSearch instead of direct API access per computer
 ## 28-July-2015
 
